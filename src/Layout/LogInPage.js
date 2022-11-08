@@ -1,16 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Footer from '../Components/Shared/Footer';
 import Header from '../Components/Shared/Header/Header';
 
-const Main = () => {
+const LogInPage = () => {
     return (
-        <div>
+        <div className='h-screen bg-black'>
             <Header></Header>
             <Outlet></Outlet>
-            <Footer></Footer>
         </div>
     );
 };
 
-export default Main;
+export default LogInPage;

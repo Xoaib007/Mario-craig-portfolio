@@ -1,12 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import './Header.css';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     return (
         <div>
-            <div className="navbar bg-base-100">
+            <div id='nav' className="navbar bg-black">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -14,27 +15,23 @@ const Header = () => {
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 semi-bold">
                             <li><Link to='/'>Home</Link></li>
-                            <li tabIndex={0}>
-                                <Link to='' className="justify-between">
-                                    Parent
-                                    <svg className="fill-current" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z" /></svg>
-                                </Link>
-                                {/* <ul className="p-2 mt-3 shadow bg-base-100 rounded-box w-52 ">
-                                    <li><Link to='/user/login'>Log In</Link></li>
-                                    <li><Link to='/user/signup'> Sign Up</Link></li>
-                                </ul> */}
-                            </li>
-                            <li><Link>Item 3</Link></li>
+                            <li><Link to='/programs'>Programs</Link></li>
+                            <li><Link>My Reviews</Link></li>
+                            <li><Link>Add Program</Link></li>
                         </ul>
                     </div>
                     <Link to='/'><img className='ml-10 mt-5 mb-5 w-20 h-20' src='https://i.ibb.co/162Yp8Z/clipart175587.png' alt=''></img></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <li className='hover:text-orange-600 hover:text-2xl'><Link to='/'>Home</Link></li>
-                        <li className='hover:text-orange-600 hover:text-2xl'><Link to='/programs'>Programs</Link></li>
-                        <li className='hover:text-orange-600 hover:text-2xl'><Link to='/services'>My Reviews</Link></li>
-                        <li className='hover:text-orange-600 hover:text-2xl'><Link to='/services'>Add Program</Link></li>
+                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/'>Home</NavLink></button>
+                        
+                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/programs'>Programs</NavLink></button>
+
+                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/d'>My Review</NavLink></button>
+
+                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/d'>Add Programms</NavLink></button>
+                        
                     </ul>
                 </div>
                 <div className="navbar-end">

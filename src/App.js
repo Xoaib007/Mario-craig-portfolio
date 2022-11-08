@@ -4,7 +4,7 @@ import { router } from './Routes/Routes';
 
 function App() {
   return (
-    <div data-theme="halloween" className="App">
+    <div className="App bg-black text-white">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

@@ -12,10 +12,12 @@ const Programs = () => {
     },[])
     return (
         <div>
-            <div className='grid gap-6 mx-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center '>
+            <p className='text-4xl text-orange-400 font-bold w-fit border-x-8 px-10 my-28 border-orange-600 mx-auto block'>All Programs</p>
+
+            <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-20'>
                 {
                     programs.map( program => (
-                        <div key={program._id} className="card card-compact w-80 bg-base-100 border-amber-500 border-2">
+                        <div key={program._id} className="card card-compact w-80 border-amber-500 border-2">
                         <figure><img src={program.img} alt="Shoes" /></figure>
                         <div className="card-body">
                             <h2 className="card-title">{program.name}</h2>
