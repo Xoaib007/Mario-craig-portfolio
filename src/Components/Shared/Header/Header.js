@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { authContext } from '../../../Context/AuthProvider';
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
+    const { user, logOut } = useContext(authContext)
     return (
         <div>
             <div id='nav' className="navbar bg-black">
@@ -35,12 +37,11 @@ const Header = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    {/* {
+                    {
                         user?.uid ?
                             <>
-                                <Link to='/orders'><FontAwesomeIcon className='hover:text-orange-600 hover:w-8 hover:h-8 w-7 h-7 p-3 mr-10 ' icon={faCartShopping} /></Link>
-                                <FontAwesomeIcon className='mr-10 w-5 h-5 border-white p-3 rounded-full border-2' icon={faUser} />
-                                <button className='btn btn-outline mr-5 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
+                                <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
                             </>
                             :
                             <>
@@ -48,7 +49,7 @@ const Header = () => {
                                 <Link to='/user/login' className="btn btn-outline mr-10 hover:text-orange-600">Log In</Link>
                             </>
 
-                    } */}
+                    }
                 </div>
             </div>
         </div>
