@@ -24,8 +24,7 @@ const Services = () => {
                 <p className='text-4xl text-orange-400 font-bold '>My fitness programs</p>
                 <p className='tex-xl font-semibold mt-5'>I designed my programs for all kind of purpose.<br />Contact me if you are confused which program to choose.</p>
             </div>
-            <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-5'>
-
+            <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-20'>
                 {
                     programs.map(program => (
                         <div key={program._id} className=" program card card-compact w-80 border-amber-500 border-2">
@@ -34,7 +33,7 @@ const Services = () => {
                                     easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
                                 >
                                     <PhotoView src={program.img}>
-                                        <img src={program.img} alt="" />
+                                        <img className='card-image' src={program.img} alt="" />
                                     </PhotoView>
                                 </PhotoProvider>
                             </div>

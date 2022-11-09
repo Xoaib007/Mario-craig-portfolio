@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 import './Programs.css'
 
 const Programs = () => {
@@ -22,7 +24,15 @@ const Programs = () => {
                 {
                     programs.map(program => (
                         <div key={program._id} className=" program card card-compact w-80 border-amber-500 border-2">
-                            <figure><img src={program.img} alt="Shoes" /></figure>
+                        <div>
+                                <PhotoProvider speed={() => 800}
+                                    easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+                                >
+                                    <PhotoView src={program.img}>
+                                        <img className='card-image' src={program.img} alt="" />
+                                    </PhotoView>
+                                </PhotoProvider>
+                            </div>
                             <div className="card-body">
                                 <div className='flex flex-col '>
                                     <div className="align flex">
@@ -48,6 +58,10 @@ const Programs = () => {
                     ))
                 }
             </div>
+            <div className="tooltip tooltip-primary" data-tip="Add new program">
+                <Link to='/addprogram'><FontAwesomeIcon className=' w-10 h-10 mb-5 text-primary' icon={faCirclePlus} /></Link>
+            </div>
+            
         </div>
     );
 };

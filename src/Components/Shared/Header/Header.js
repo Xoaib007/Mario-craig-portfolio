@@ -26,20 +26,20 @@ const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal p-0">
-                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/'>Home</NavLink></button>
+                        <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/'>Home</NavLink></button>
 
-                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/programs'>Programs</NavLink></button>
+                        <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/programs'>Programs</NavLink></button>
 
-                        <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/blog'>Blog</NavLink></button>
+                        <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/blog'>Blog</NavLink></button>
                     </ul>
                 </div>
                 <div className="navbar-end">
                     {
                         user?.uid ?
                             <>
-                                <button className='hover:text-orange-600 hover:text-2xl mx-5'><NavLink activeClassName="active" to='/d'>My Review</NavLink></button>
+                                <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/d'>My Review</NavLink></button>
 
-                                <button className='hover:text-orange-600 hover:text-2xl ml-5 mr-8'><NavLink activeClassName="active" to='/d'>Add Programms</NavLink></button>
+                                <button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button>
 
                                 <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
 

@@ -1,4 +1,5 @@
 
+import AddProgram from "../Components/AddProgram/AddProgram";
 import LogIn from "../Components/Authentication/LogIn";
 import SignUp from "../Components/Authentication/SignUp";
 import Blog from "../Components/Blog/Blog";
@@ -30,7 +31,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/blog',
-                element: <Blog></Blog>
+                element: <Blog></Blog>,
+            },
+            {
+                path: '/addprogram',
+                element: <AddProgram></AddProgram>,
+                loader: () => fetch(`http://localhost:5000/programs`)
             }
         ]
     },

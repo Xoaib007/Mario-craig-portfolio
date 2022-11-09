@@ -3,6 +3,8 @@ import { Link, useLoaderData } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faCalendarDays, faClock } from '@fortawesome/free-regular-svg-icons'
 import { faChartLine, faRankingStar, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import SingleProgramAllReview from '../SingleProgramAllReview/SingleProgramAllReview';
+import ReviewForm from '../ReviewForm/ReviewForm';
 
 const SingleProgram = () => {
     const program = useLoaderData();
@@ -64,6 +66,10 @@ const SingleProgram = () => {
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                <SingleProgramAllReview program={program}/>
+                <ReviewForm program={program}/>
             </div>
         </div>
     );
