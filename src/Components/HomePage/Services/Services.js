@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-regular-svg-icons';
+import { PhotoProvider, PhotoView } from 'react-photo-view';
+import 'react-photo-view/dist/react-photo-view.css';
 
 const Services = () => {
     const [programs, setPrograms] = useState([]);
@@ -23,10 +25,19 @@ const Services = () => {
                 <p className='tex-xl font-semibold mt-5'>I designed my programs for all kind of purpose.<br />Contact me if you are confused which program to choose.</p>
             </div>
             <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-5'>
+
                 {
                     programs.map(program => (
                         <div key={program._id} className=" program card card-compact w-80 border-amber-500 border-2">
-                            <figure><img src={program.img} alt="Shoes" /></figure>
+                            <div>
+                                <PhotoProvider speed={() => 800}
+                                    easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+                                >
+                                    <PhotoView src={program.img}>
+                                        <img src={program.img} alt="" />
+                                    </PhotoView>
+                                </PhotoProvider>
+                            </div>
                             <div className="card-body">
                                 <div className='flex flex-col '>
                                     <div className="align flex">
@@ -39,9 +50,9 @@ const Services = () => {
                                     </div>
                                     <p className='mt-5 text-left text-xl pb-0 w-fit h-fit border-b-2 border-orange-600 font-semibold'>Details</p>
                                     <div>
-                                        <p className='text-white text-left'>{program.details.slice(0, 100)+'...'}</p>
+                                        <p className='text-white text-left'>{program.details.slice(0, 100) + '...'}</p>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -53,7 +64,16 @@ const Services = () => {
                 }
             </div>
             <Link to='/programs'><button className="btn btn-outline btn-warning mt-5 mb-40 hover:text-xl">All Programs</button></Link>
-        </div>
+
+            <PhotoProvider
+                speed={() => 800}
+                easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
+            >
+                <PhotoView src="/1.jpg">
+                    <img src="/1-thumbnail.jpg" alt="" />
+                </PhotoView>
+            </PhotoProvider>
+        </div >
     );
 };
 
