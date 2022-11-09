@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { GoogleAuthProvider } from "firebase/auth";
 
 const LogIn = () => {
-    const { signin } = useContext(authContext);
+    const { signin, googleSignIn } = useContext(authContext);
     const location = useLocation();
     const navigate = useNavigate();
-    const from = location.state?.from?.pathname || '/'
+    const from = location.state?.from?.pathname || '/';
+
+    const provider = new GoogleAuthProvider();
 
     const handleLogin = e => {
         e.preventDefault();
@@ -35,15 +40,19 @@ const LogIn = () => {
                     .then(data => {
                         console.log(data)
                     })
-
-
-                // navigate(from, {replace : true})
             })
             .catch(error => console.error(error))
     }
+    const handleGoogleLogIn = () => {
+        googleSignIn(provider)
+        .then(result => {
+            const user = result.user;
+        })
+        .catch(error => console.error(error))
+    }
     return (
         <div className='flex'>
-            <div className="hero w-full ml-64 mt-32 ">
+            <div className="hero w-full ml-64 mt-26 pt-6 ">
                 <form onSubmit={handleLogin} className="py-10 card flex-shrink-0 w-full max-w-sm shadow-2xl bottom-20">
                     <div className="card-body">
                         <h1 className=' text-center text-4xl text-orange-400 font-bold px-10 ml-10 border-x-8 w-fit border-orange-600'>Log In</h1>
@@ -65,6 +74,11 @@ const LogIn = () => {
                         <div className="form-control mt-6">
                             <input type='submit' value='login' className="btn btn-primary" />
                         </div>
+                    </div>
+                    <div>
+                        <button onClick={handleGoogleLogIn}  className='flex justify-center mx-auto mb-5'>
+                        <FontAwesomeIcon className=' w-6 h-6 border-white p-2 rounded-full border-2  relative left-5' icon={faGoogle}/>
+                        <p className='border-white border-r-2 border-t-2 border-b-2 rounded-r-full p-2 pl-7'>Log In with Google</p></button>
                     </div>
                     <p>New to Genius Car? <Link className='text-orange-600 font-bold' to='/user/signup'>Sign Up </Link></p>
                 </form>
