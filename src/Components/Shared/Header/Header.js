@@ -37,7 +37,7 @@ const Header = () => {
                     {
                         user?.uid ?
                             <>
-                                <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/d'>My Review</NavLink></button>
+                                <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/myreviews'>My Reviews</NavLink></button>
 
                                 <button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button>
 

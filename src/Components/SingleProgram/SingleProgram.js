@@ -17,7 +17,7 @@ const SingleProgram = () => {
                 <p className=' text-orange-500 text-5xl font-bold'>{program.name}</p>
             </div>
             <div className='flex flex-row mt-20'>
-                <div className='ml-20 mt-10 w-1/3 text-left'>
+                <div className='ml-20 mt-10 w-1/3 text-justify'>
                     <p className='text-orange-400 text-3xl font-semibold h-fit pl-5 mb-10 text-left border-l-8 border-orange-600'>About</p>
                     <p>{program.details}</p>
                 </div>

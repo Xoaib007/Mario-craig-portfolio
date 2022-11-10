@@ -4,10 +4,12 @@ import LogIn from "../Components/Authentication/LogIn";
 import SignUp from "../Components/Authentication/SignUp";
 import Blog from "../Components/Blog/Blog";
 import HomePage from "../Components/HomePage/HomePage";
+import MyReviews from "../Components/MyReviews/MyReviews";
 import Programs from "../Components/Programs/Programs";
 import SingleProgram from "../Components/SingleProgram/SingleProgram";
 import LogInPage from "../Layout/LogInPage";
 import Main from "../Layout/Main";
+import PrivateRoutes from "./PrivateRoute";
 
 const { createBrowserRouter } = require("react-router-dom");
 
@@ -35,8 +37,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/addprogram',
-                element: <AddProgram></AddProgram>,
+                element: <PrivateRoutes><AddProgram></AddProgram></PrivateRoutes>,
                 loader: () => fetch(`http://localhost:5000/programs`)
+            },
+            {
+                path: '/myreviews',
+                element: <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>,
             }
         ]
     },

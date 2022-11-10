@@ -55,7 +55,7 @@ const ReviewForm = (props) => {
 
     return (
         <div className='mx-auto mb-20'>
-            <div className='align w-fit px-4 flex flex-row mx-auto border-x-8 border-white mt-10 relative right-36 top-8'>
+            <div className='align w-fit pr-4 flex flex-row mx-auto border-r-8 border-white mt-10 relative right-36 top-8'>
                 <p className='text-orange-400 text-2xl font-semibold'>Write Your Review About This Program</p>
             </div>
             <Form onSubmit={handlePost} className='flex flex-col'>

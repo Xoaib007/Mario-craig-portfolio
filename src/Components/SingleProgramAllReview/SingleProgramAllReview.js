@@ -13,11 +13,12 @@ const SingleProgramAllReview = (props) => {
             })
     }, [props.program._id])
     return (
-        <div className='mt-40'>
+        <div className='mt-40 mb-20'>
+            <p className='text-2xl text-orange-400 font-bold w-fit border-x-8 px-10 my-28 border-orange-600 mx-auto block'>Reviews</p>
             {
                 reviews.map(review => (
                     <div className='w-1/2 mx-auto mb-8'>
-                        <div className='flex mb-2'>
+                        <div className='flex flex-row mb-2 mt-2'>
                             <FontAwesomeIcon className='w-5 h-5 mt-1 mr-3' icon={faCircleUser} />
                             {
                                 review?.userName?
@@ -31,7 +32,7 @@ const SingleProgramAllReview = (props) => {
                             }
                         </div>
                         <div>
-                            <p className='bg-gray-900 rounded-lg text-left h-fit w-full'>{review.review}</p>
+                            <p className='bg-gray-900 rounded-lg text-justify p-2 h-fit w-full'>{review.review}</p>
                         </div>
                     </div>
                 ))
