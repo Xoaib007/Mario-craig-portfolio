@@ -9,7 +9,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 const Services = () => {
     const [programs, setPrograms] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/programs')
+        fetch('https://mario-craig-server.vercel.app/programs')
             .then(res => res.json())
             .then(data => {
                 const partial = data.slice(0, 3);

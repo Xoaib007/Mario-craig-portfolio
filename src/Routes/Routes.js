@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
             {
                 path: '/programs/:id',
                 element: <SingleProgram></SingleProgram>,
-                loader: ({params}) => fetch(`http://localhost:5000/programs/${params.id}`)
+                loader: ({params}) => fetch(`https://mario-craig-server.vercel.app/programs/${params.id}`)
             },
             {
                 path: '/blog',
@@ -38,7 +38,7 @@ export const router = createBrowserRouter([
             {
                 path: '/addprogram',
                 element: <PrivateRoutes><AddProgram></AddProgram></PrivateRoutes>,
-                loader: () => fetch(`http://localhost:5000/programs`)
+                loader: () => fetch(`https://mario-craig-server.vercel.app/programs`)
             },
             {
                 path: '/myreviews',

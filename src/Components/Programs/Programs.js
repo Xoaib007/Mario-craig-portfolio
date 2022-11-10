@@ -10,22 +10,40 @@ import './Programs.css'
 const Programs = () => {
     document.title = "program";
     const [programs, setPrograms] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+
     useEffect(() => {
-        fetch('http://localhost:5000/programs')
+        setIsLoading(true);
+        fetch('https://mario-craig-server.vercel.app/programs')
             .then(res => res.json())
             .then(data => {
                 setPrograms(data);
+                setIsLoading(false)
             })
     }, [])
     return (
         <div>
+            {
+                isLoading ?
+                    <>
+                        <div className=' h-screen mx-auto mt-1/2'>
+                            <svg class="bg-white w-20 relative left-96 ml-96 top-72 animate-spin h-5  mr-3 ..." viewBox="0 0 24 24" />
+                        </div>
+                    </>
+                    :
+                    <>
+                        <div className='hidden h-screen mx-auto mt-1/2'>
+                            <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24" />
+                        </div>
+                    </>
+            }
             <p className='text-4xl text-orange-400 font-bold w-fit border-x-8 px-10 my-28 border-orange-600 mx-auto block'>All Programs</p>
 
             <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-20'>
                 {
                     programs.map(program => (
                         <div key={program._id} className=" program card card-compact w-80 border-amber-500 border-2">
-                        <div>
+                            <div>
                                 <PhotoProvider speed={() => 800}
                                     easing={(type) => (type === 2 ? 'cubic-bezier(0.36, 0, 0.66, -0.56)' : 'cubic-bezier(0.34, 1.56, 0.64, 1)')}
                                 >
@@ -46,9 +64,9 @@ const Programs = () => {
                                     </div>
                                     <p className='mt-5 text-left text-xl pb-0 w-fit h-fit border-b-2 border-orange-600 font-semibold'>Details</p>
                                     <div>
-                                        <p className='text-white text-left'>{program.details.slice(0, 100)+'...'}</p>
+                                        <p className='text-white text-left'>{program.details.slice(0, 100) + '...'}</p>
                                     </div>
-                                    
+
                                 </div>
 
 
@@ -62,7 +80,7 @@ const Programs = () => {
             <div className="tooltip tooltip-primary" data-tip="Add new program">
                 <Link to='/addprogram'><FontAwesomeIcon className=' w-10 h-10 mb-5 text-primary' icon={faCirclePlus} /></Link>
             </div>
-            
+
         </div>
     );
 };

@@ -10,7 +10,7 @@ const ReviewForm = (props) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${props.program._id}`)
+        fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
@@ -32,7 +32,7 @@ const ReviewForm = (props) => {
             review: review
         }
 
-        fetch('http://localhost:5000/reviews', {
+        fetch('https://mario-craig-server.vercel.app/reviews', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

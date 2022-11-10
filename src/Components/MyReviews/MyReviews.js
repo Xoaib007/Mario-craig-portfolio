@@ -11,7 +11,7 @@ const MyReviews = () => {
 
     const [myReviews, setMyReviews] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/user/${user?.uid}`)
+        fetch(`https://mario-craig-server.vercel.app/reviews/user/${user?.uid}`)
             .then(res => res.json())
             .then(data => setMyReviews(data))
     }, [user?.uid])
@@ -20,8 +20,11 @@ const MyReviews = () => {
         const proceed = window.confirm('You sure want to delete this review?')
 
         if (proceed) {
-            fetch(`http://localhost:5000/reviews/id/${_id}`, {
+            fetch(`https://mario-craig-server.vercel.app/reviews/id/${_id}`, {
                 method: 'DELETE',
+                headers:{   
+                 authorization: `Bearer ${localStorage.getItem('token')}`,
+                }
             })
 
                 .then(res => res.json())
@@ -43,12 +46,12 @@ const MyReviews = () => {
         const form = event.target;
         const editedReview = form.review.value;
 
-        fetch(`http://localhost:5000/reviews/id/${id}`, {
+        fetch(`https://mario-craig-server.vercel.app/reviews/id/${id}`, {
              method: 'PATCH',
              headers:{
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(editedReview)
+            body: JSON.stringify({review: editedReview}),
             })
             .then(res=> res.json())
             .then(data=> {
@@ -58,9 +61,9 @@ const MyReviews = () => {
 
     return (
         <div className='min-h-screen'>
-            <div className='mb-20'>
+            <div className='mb-40'>
                 {
-                    myReviews.map(myReviews => (
+                    myReviews.map( (myReviews) => (
                         <div key={myReviews._id}>
                             <div className='flex w-6/12 mx-auto justify-between'>
                                 <p className=' text-left mb-2 mt-14'>You reviewed <Link to={`../programs/${myReviews.program}`} className='font-bold text-orange-400 hover:text-orange-600'>{myReviews.programName} ({myReviews.programName2})</Link></p>
@@ -80,12 +83,12 @@ const MyReviews = () => {
                             Modal Body
                             -------------*/}
                             <input type="checkbox" id={myReviews._id} className="modal-toggle" />
-                            <form onSubmit={(e)=>handleEditReview(e, myReviews._id)} className="modal">
+                            <form onSubmit={(e)=>handleEditReview(e,myReviews?._id)} className="modal">
                                 <div className="modal-box bg-black ">
                                 <p className='text-2xl font-bold mb-5 text-left pl-5'>Edit your review:</p>
                                 <textarea name='review' className="textarea textarea-primary bg-black w-11/12 h-56 mx-auto" placeholder="Write Your Review" defaultValue={`${myReviews.review}`}required />
                                     <div className="modal-action">
-                                        <label type='submit' htmlFor={myReviews._id} className="btn btn-sm relative right-4 bottom-4 bg-orange-400">Done</label>
+                                        <button type='submit' htmlFor={myReviews._id} className="btn btn-sm relative right-4 bottom-4 bg-orange-400">Done</button>
                                     </div>
                                 </div>
                             </form>

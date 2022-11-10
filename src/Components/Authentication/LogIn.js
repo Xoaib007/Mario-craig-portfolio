@@ -21,6 +21,7 @@ const LogIn = () => {
         signin(email, password)
             .then(result => {
                 const user = result.user;
+
                 navigate('../../')
                 form.reset();
 
@@ -28,7 +29,7 @@ const LogIn = () => {
                     email: user.email
                 }
 
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://mario-craig-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
@@ -37,7 +38,8 @@ const LogIn = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data)
+                        console.log(data.token);
+                        localStorage.setItem('token', data.token)
                     })
             })
             .catch(error => console.error(error))

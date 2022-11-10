@@ -30,7 +30,7 @@ const AddProgram = () => {
             programid: id,
         }
 
-        fetch('http://localhost:5000/programs', {
+        fetch('https://mario-craig-server.vercel.app/programs', {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

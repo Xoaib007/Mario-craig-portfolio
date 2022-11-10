@@ -2,7 +2,7 @@ import React from 'react';
 
 const CustomProgram = () => {
     return (
-        <div className='h-96 bg-slate-900 mt-40 mb-60'>
+        <div className='h-96 bg-slate-900 mt-40 mb-96'>
             <div className='w-1/2 mx-auto pt-10'>
                 <p className='text-5xl font-bold text-orange-600 mx-auto mb-5'>BE A BETTER​ YOU</p>
                 <p className='text-3xl font-semibold text-orange-400 mx-auto my-3'>Get a personalize program now!!</p>

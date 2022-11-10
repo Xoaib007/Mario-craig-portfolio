@@ -6,7 +6,7 @@ const SingleProgramAllReview = (props) => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${props.program._id}`)
+        fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`)
             .then(res => res.json())
             .then(data => {
                 setReviews(data)
