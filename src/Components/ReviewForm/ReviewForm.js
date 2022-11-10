@@ -1,11 +1,21 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../Context/AuthProvider';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 
 const ReviewForm = (props) => {
     const { user } = useContext(authContext);
+
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${props.program._id}`)
+            .then(res => res.json())
+            .then(data => {
+                setReviews(data)
+            })
+    }, [props.program._id])
 
     const handlePost = e => {
         e.preventDefault();
@@ -13,6 +23,7 @@ const ReviewForm = (props) => {
         const review = form.review.value;
 
         const review1 = {
+            reviewId: reviews.length + 1,
             user: user.uid,
             userName: user.displayName,
             program: props.program._id,
@@ -49,7 +60,20 @@ const ReviewForm = (props) => {
             </div>
             <Form onSubmit={handlePost} className='flex flex-col'>
                 <FontAwesomeIcon className='w-10 h-10 relative left-80 top-14' icon={faCircleUser} />
-                <textarea name='review' className="textarea textarea-primary bg-transparent w-1/2 h-56 mx-auto" placeholder="Write Your Review" required />
+                {
+                    user?.uid ?
+                        <>
+                            <textarea name='review' className="textarea textarea-primary bg-transparent w-1/2 h-56 mx-auto" placeholder="Write Your Review" required />
+                        </>
+                        :
+                        <>
+                        <div className='border-blue-900 border-2 rounded-lg bg-transparent w-1/2 h-56 mx-auto'>
+                            <p className='relative top-1/2 mx-auto'>You are not logged in. <Link to='../../user/login' className='border-b-2 text-orange-400 hover:text-orange-600 border-orange-700'>Log in here</Link> to create a review for this program.</p>
+                        </div>
+                            
+                        </>
+                }
+
                 <div className="form-control w-1/12 mx-auto mt-3 relative left-80">
                     <input type='submit' value='Post' className="btn btn-primary hover:bg-orange-600 hover:font-bold hover:text-xl hover:border-tranparent" />
                 </div>
