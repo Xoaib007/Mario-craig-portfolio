@@ -2,6 +2,7 @@ import React from 'react';
 import { Player} from '@lottiefiles/react-lottie-player';
 
 const Blog = () => {
+    document.title = "blog";
     return (
         <div className='flex flex-row'>
             <div className="mockup-phone mb-20 relative left-24">

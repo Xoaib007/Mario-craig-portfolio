@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, useLoaderData} from 'react-router-dom';
 
 const AddProgram = () => {
+    document.title = "Add";
     const existingPrograms = useLoaderData();
 
     const handleNewProgram = e =>{

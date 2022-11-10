@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { GoogleAuthProvider } from "firebase/auth";
 
 const LogIn = () => {
+    document.title = "login";
     const { signin, googleSignIn } = useContext(authContext);
     const navigate = useNavigate();
 

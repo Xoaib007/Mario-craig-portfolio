@@ -6,6 +6,7 @@ import { authContext } from '../../Context/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
 
 const SignUp = () => {
+    document.title = "Signup";
     const [error, setError] = useState(null);
     const { createUser, googleSignIn } = useContext(authContext);
     const [user, setUser] = useState([])

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const MyReviews = () => {
+    document.title = "My reviews";
     const { user } = useContext(authContext);
 
     const [myReviews, setMyReviews] = useState([]);

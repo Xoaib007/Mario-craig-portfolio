@@ -8,6 +8,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import './Programs.css'
 
 const Programs = () => {
+    document.title = "program";
     const [programs, setPrograms] = useState([]);
     useEffect(() => {
         fetch('http://localhost:5000/programs')
