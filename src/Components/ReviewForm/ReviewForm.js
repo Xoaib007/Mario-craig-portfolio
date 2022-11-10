@@ -28,6 +28,7 @@ const ReviewForm = (props) => {
             userName: user.displayName,
             program: props.program._id,
             programName: props.program.namedetail,
+            programName2: props.program.name,
             review: review
         }
 

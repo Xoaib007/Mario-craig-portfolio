@@ -8,6 +8,7 @@ import { GoogleAuthProvider } from "firebase/auth";
 const SignUp = () => {
     const [error, setError] = useState(null);
     const { createUser, googleSignIn } = useContext(authContext);
+    const [user, setUser] = useState([])
 
 
     const provider = new GoogleAuthProvider();
@@ -18,6 +19,7 @@ const SignUp = () => {
         const email = form.email.value;
         const password = form.password.value;
         const confirm = form.confirm.value;
+        const displayName = form.name.value;
 
         if (password.length <= 6) {
             setError('password must be upto 6 charecter');
@@ -28,10 +30,11 @@ const SignUp = () => {
             return;
         }
 
-        createUser(email, password)
+        createUser(email, password, displayName)
             .then(result => {
                 const user = result.user;
                 alert('Signed Up Successfully')
+                setUser(user)
                 form.reset();
             })
             .catch(error => console.error(error))
@@ -41,6 +44,7 @@ const SignUp = () => {
         googleSignIn(provider)
         .then(result => {
             const user = result.user;
+            setUser(user)
         })
         .catch(error => console.error(error))
     }
@@ -55,7 +59,7 @@ const SignUp = () => {
                             <label className="label">
                                 <span className="label-text text-white">Name</span>
                             </label>
-                            <input name='name' type="text" placeholder="Your name" className="input input-bordered text-black" required />
+                            <input name='name' type="text" placeholder="name" className="input input-bordered text-black" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
