@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useQuery } from '@tanstack/react-query';
 
 const SingleProgramAllReview = (props) => {
-    const [reviews, setReviews] = useState([]);
+    
 
-    useEffect(() => {
-        fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`)
-            .then(res => res.json())
-            .then(data => {
-                setReviews(data)
-            })
-    }, [props.program._id])
+    const { data: reviews = []} = useQuery({
+        queryKey: ['booking'],
+        queryFn: () => fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`).then(res => res.json())
+    })
+
     return (
         <div className='mt-40 mb-20'>
             <p className='text-2xl text-orange-400 font-bold w-fit border-x-8 px-10 my-28 border-orange-600 mx-auto block'>Reviews</p>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,6 +7,18 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Header = () => {
     const { user, logOut } = useContext(authContext)
+
+    const [currentUser, setCurrentUser] = useState(null);
+
+    console.log(currentUser);
+    useEffect(() => {
+        if (user?.email) {
+            fetch(`https://mario-craig-server.vercel.app/users/${user?.email}`).then(res => res.json()).then(data => {
+                setCurrentUser(data)
+            })
+        }
+    }, [user?.email])
+
     return (
         <div>
             <div id='nav' className="navbar bg-black">
@@ -37,13 +49,24 @@ const Header = () => {
                     {
                         user?.uid ?
                             <>
-                                <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/myreviews'>My Reviews</NavLink></button>
+                                {
+                                    currentUser?.role === 'admin' ?
+                                        <>
+                                            <button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button>
 
-                                <button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button>
+                                            <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
 
-                                <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
+                                            <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                        </>
+                                        :
+                                        <>
+                                            <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/myreviews'>My Reviews</NavLink></button>
 
-                                <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                            <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
+
+                                            <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                        </>
+                                }
                             </>
                             :
                             <>

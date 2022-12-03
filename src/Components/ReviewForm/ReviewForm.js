@@ -1,21 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext} from 'react';
 import { authContext } from '../../Context/AuthProvider';
 import { faCircleUser } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Form, Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const ReviewForm = (props) => {
     const { user } = useContext(authContext);
 
-    const [reviews, setReviews] = useState([]);
 
-    useEffect(() => {
-        fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`)
-            .then(res => res.json())
-            .then(data => {
-                setReviews(data)
-            })
-    }, [props.program._id])
+    const { data: reviews = [], refetch} = useQuery({
+        queryKey: ['booking'],
+        queryFn: () => fetch(`https://mario-craig-server.vercel.app/reviews/${props.program._id}`).then(res => res.json())
+    })
 
     const handlePost = e => {
         e.preventDefault();
@@ -43,12 +41,14 @@ const ReviewForm = (props) => {
             .then(res => res.json())
             .then(data => {
                 if (data.acknowledged) {
-                    alert('Review posted successfully');
-                    form.reset()
+                    toast('Review posted successfully');
+                    form.reset();
+                    refetch()
                 }
                 else {
-                    alert('review unsuccessfull. check the given data is correct');
-                    form.reset()
+                    toast('review unsuccessfull. check the given data is correct');
+                    form.reset();
+                    refetch()
                 }
             })
             .catch(error => console.error(error))

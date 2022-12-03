@@ -61,13 +61,13 @@ const LogIn = () => {
                             <label className="label">
                                 <span className="label-text text-white">Email</span>
                             </label>
-                            <input name='email' type="text" placeholder="email" className="input input-bordered" />
+                            <input name='email' type="text" placeholder="email" className="input input-bordered text-black" />
                         </div>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text text-white">Password</span>
                             </label>
-                            <input name='password' type="password" placeholder="password" className="input input-bordered" defaultValue={''} />
+                            <input name='password' type="password" placeholder="password" className="input input-bordered text-black" defaultValue={''} />
                             <label className="label">
                                 <Link to='#' className="label-text-alt link link-hover text-white">Forgot password?</Link>
                             </label>
@@ -81,7 +81,7 @@ const LogIn = () => {
                         <FontAwesomeIcon className=' w-6 h-6 border-white p-2 rounded-full border-2  relative left-5' icon={faGoogle}/>
                         <p className='border-white border-r-2 border-t-2 border-b-2 rounded-r-full p-2 pl-7'>Log In with Google</p></button>
                     </div>
-                    <p>New to Genius Car? <Link className='text-orange-600 font-bold' to='/user/signup'>Sign Up </Link></p>
+                    <p>New here? <Link className='text-orange-600 font-bold' to='/user/signup'>Sign Up </Link></p>
                 </form>
             </div>
             <img className='w-6/12' src='https://i.ibb.co/0j1HXrd/banner.jpg' alt=''></img>

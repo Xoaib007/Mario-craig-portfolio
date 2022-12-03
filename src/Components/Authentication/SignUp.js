@@ -1,9 +1,10 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../Context/AuthProvider';
 import { GoogleAuthProvider } from "firebase/auth";
+import toast from 'react-hot-toast';
 
 const SignUp = () => {
     document.title = "Signup";
@@ -11,6 +12,12 @@ const SignUp = () => {
     const { createUser, googleSignIn } = useContext(authContext);
     const [user, setUser] = useState([])
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/';
+
+    
 
     const provider = new GoogleAuthProvider();
 
@@ -21,6 +28,7 @@ const SignUp = () => {
         const password = form.password.value;
         const confirm = form.confirm.value;
         const displayName = form.name.value;
+        const role = 'user';
 
         if (password.length <= 6) {
             setError('password must be upto 6 charecter');
@@ -31,14 +39,30 @@ const SignUp = () => {
             return;
         }
 
-        createUser(email, password, displayName)
+        createUser(email, password, displayName, role)
             .then(result => {
                 const user = result.user;
-                alert('Signed Up Successfully')
                 setUser(user)
-                form.reset();
+                
+                saveUser(displayName, email,role ) 
+                navigate(from, { replace: true })
             })
             .catch(error => console.error(error))
+    }
+
+    const saveUser = (displayName, email, role) => {
+        const user = { displayName, email, role };
+        fetch('https://mario-craig-server.vercel.app/users', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(() => {
+            toast.success('Successfully signed up')
+        })
     }
 
     const handleGoogleSignIn = () => {
