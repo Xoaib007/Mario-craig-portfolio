@@ -1,5 +1,6 @@
-=>The total website is built on React js<br/>
-=>Used Tailwind and DaisyUI for ui.<br/>
-=>Used Firebase for authentication and Mongodb for storing data<br/>
-=>Its not either responsive or optimized fot browers like Mozilla. Please browse the site in chrome.<br/>
-=>Some features is still in under development.<br/>
+https://mario-craig.netlify.app/
+
+Server side: https://github.com/Xoaib007/Mario-craig-server-side
+
+Its a personal portfolio for a personal fintness trainer.Have a dedicated admin panel for the owner to control contents
+User can book for a personal meeting for a personalized program 
