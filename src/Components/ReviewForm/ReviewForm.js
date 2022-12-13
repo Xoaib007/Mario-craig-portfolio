@@ -56,15 +56,15 @@ const ReviewForm = (props) => {
 
     return (
         <div className='mx-auto mb-20'>
-            <div className='align w-fit pr-4 flex flex-row mx-auto border-r-8 border-white mt-10 relative right-36 top-8'>
+            <div className='align w-fit pr-4 flex flex-row mx-auto border-r-8 border-white mt-10 lg:relative lg:right-36 top-8'>
                 <p className='text-orange-400 text-2xl font-semibold'>Write Your Review About This Program</p>
             </div>
             <Form onSubmit={handlePost} className='flex flex-col'>
-                <FontAwesomeIcon className='w-10 h-10 relative left-80 top-14' icon={faCircleUser} />
+                <FontAwesomeIcon className='w-10 h-10 relative left-80 top-14 hidden lg:block' icon={faCircleUser} />
                 {
                     user?.uid ?
                         <>
-                            <textarea name='review' className="textarea textarea-primary bg-transparent w-1/2 h-56 mx-auto" placeholder="Write Your Review" required />
+                            <textarea name='review' className="textarea textarea-primary bg-transparent mx-auto mt-5 w-3/4 lg:w-1/2 h-56 lg:mx-auto" placeholder="Write Your Review" required />
                         </>
                         :
                         <>
@@ -75,7 +75,7 @@ const ReviewForm = (props) => {
                         </>
                 }
 
-                <div className="form-control w-1/12 mx-auto mt-3 relative left-80">
+                <div className="form-control w-1/2 lg:w-1/12 mx-auto mt-3 lg:relative lg:left-80">
                     <input type='submit' value='Post' className="btn btn-primary hover:bg-orange-600 hover:font-bold hover:text-xl hover:border-tranparent" />
                 </div>
             </Form>
