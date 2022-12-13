@@ -2,7 +2,7 @@ import React from 'react';
 
 const MyMission = () => {
     return (
-        <div className='lg:flex lg:flex-row-reverse mt-72 mb-96'>
+        <div className='lg:flex lg:flex-row-reverse mt-40 lg:mt-72 mb-96'>
             <div className='w-3/4 lg:w-1/2 mx-auto'>
                 <img className=' lg:w-96 mx-auto' src='https://www.rcotterillpt.com/uploads/1/3/4/3/134350959/rcotterill-mission_orig.jpg' alt=''></img>
             </div>
