@@ -2,8 +2,8 @@ import React from 'react';
 
 const Introduction = () => {
     return (
-        <div className='h-full pt-24 ml-20 mb-44 px-16 flex'>
-            <div className="h-96  carousel carousel-vertical rounded-box ml-28">
+        <div className='h-full pt-24 lg:ml-20 mb-44 lg:px-16 lg:flex'>
+            <div className="h-96  carousel carousel-vertical rounded-box ml-10 lg:ml-28">
                 <div className="carousel-item h-full">
                     <img src="https://i.ibb.co/wS7LBF9/Screenshot-20221107-232459-Instagram.jpg" alt='' />
                 </div>

@@ -20,11 +20,11 @@ const Services = () => {
 
     return (
         <div className='h-full mt-40'>
-            <div className=' text-left pl-10 mt-32 ml-56 border-l-8 border-orange-600'>
+            <div className=' text-left lg:pl-10 mt-32 lg:ml-56 border-l-8 border-orange-600'>
                 <p className='text-4xl text-orange-400 font-bold '>My fitness programs</p>
                 <p className='tex-xl font-semibold mt-5'>I designed my programs for all kind of purpose.<br />Contact me if you are confused which program to choose.</p>
             </div>
-            <div className='grid gap-6 mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-20'>
+            <div className='grid gap-6 lg:mx-56 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-20 justify-items-center mb-20'>
                 {
                     programs.map(program => (
                         <div key={program._id} className=" program card card-compact w-80 border-amber-500 border-2">
