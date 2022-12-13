@@ -64,7 +64,7 @@ const ReviewForm = (props) => {
                 {
                     user?.uid ?
                         <>
-                            <textarea name='review' className="textarea textarea-primary bg-transparent mx-auto mt-5 w-3/4 lg:w-1/2 h-56 lg:mx-auto" placeholder="Write Your Review" required />
+                            <textarea name='review' className="textarea textarea-primary bg-transparent mx-auto mt-56 w-3/4 lg:w-1/2 h-56 lg:mx-auto" placeholder="Write Your Review" required />
                         </>
                         :
                         <>

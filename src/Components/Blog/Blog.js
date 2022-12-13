@@ -1,11 +1,11 @@
 import React from 'react';
-import { Player} from '@lottiefiles/react-lottie-player';
+// import { Player} from '@lottiefiles/react-lottie-player';
 
 const Blog = () => {
     document.title = "blog";
     return (
-        <div className='flex flex-row'>
-            <div className="mockup-phone mb-20 relative left-24">
+        <div className='flex flex-row min-h-screen'>
+            {/* <div className="mockup-phone mb-20 relative left-24">
                 <div className="camera"></div>
                 <div className="display">
                     <div className="artboard artboard-demo phone-1">
@@ -57,7 +57,7 @@ const Blog = () => {
                     src="https://assets7.lottiefiles.com/packages/lf20_y0c11mbg.json"
                     style={{ height: '80px', width: '80px' }}>
                 </Player>
-            </div>
+            </div> */}
         </div>
     );
 };

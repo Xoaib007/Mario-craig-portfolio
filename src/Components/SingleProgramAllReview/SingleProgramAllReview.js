@@ -16,7 +16,7 @@ const SingleProgramAllReview = (props) => {
             <p className='text-2xl text-orange-400 font-bold w-fit border-x-8 px-10 my-28 border-orange-600 mx-auto block'>Reviews</p>
             {
                 reviews.map(review => (
-                    <div className='w-1/2 mx-auto mb-8'>
+                    <div className='w-3/4 lg:w-1/2 mx-auto mb-8'>
                         <div className='flex flex-row mb-2 mt-2'>
                             <FontAwesomeIcon className='w-5 h-5 mt-1 mr-3' icon={faCircleUser} />
                             {
