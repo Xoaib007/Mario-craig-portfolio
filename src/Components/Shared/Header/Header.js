@@ -28,27 +28,25 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow rounded-box w-52 semi-bold bg-black">
-                            <li><NavLink activeClassName="active" to='/'>Home</NavLink></li>
-                            <li><NavLink activeClassName="active" to='/programs'>Programs</NavLink></li>
-                            <li><NavLink activeClassName="active" to='/blog'>Blog</NavLink></li>
+                            <li className=' text-left mb-2'><NavLink activeClassName="active" to='/'>Home</NavLink></li>
+                            <li className=' text-left mb-2'><NavLink activeClassName="active" to='/programs'>Programs</NavLink></li>
+                            <li className=' text-left mb-2'><NavLink activeClassName="active" to='/blog'>Blog</NavLink></li>
                             {
                                 user?.uid ?
                                     <>
                                         {
                                             currentUser?.role === 'admin' ?
                                                 <>
-                                                    <button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button>
+                                                    <li className=' text-left mb-2'><button className='hover:text-orange-600 hover:text-xl ml-5 mr-8'><NavLink activeClassName="active" to='/addprogram'>Add Programms</NavLink></button></li>
 
 
-                                                    <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                                    <li className=' text-left mb-2'><button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button></li>
                                                 </>
                                                 :
                                                 <>
-                                                    <button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/myreviews'>My Reviews</NavLink></button>
+                                                    <li className=' text-left mb-2'><button className='hover:text-orange-600 hover:text-xl mx-5'><NavLink activeClassName="active" to='/myreviews'>My Reviews</NavLink></button></li>
 
-                                                    <FontAwesomeIcon className='mr-10 w-3 h-3 border-white p-2 rounded-full border-2' icon={faUser} />
-
-                                                    <button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button>
+                                                    <li className=' text-left mb-2'><button className='btn btn-outline mr-5 text-white border-orange-400 hover:text-orange-600' onClick={logOut}>Sign Out</button></li>
                                                 </>
                                         }
                                     </>
