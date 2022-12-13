@@ -11,22 +11,22 @@ const SingleProgram = () => {
     return (
         <div className='min-h-screen'>
             <Link to='/programs'><FontAwesomeIcon className='flex ml-20 w-10 h-10 hover:text-orange-400' icon={faArrowLeft} /></Link>
-            <div className='align w-fit px-4 flex flex-row mx-auto border-x-8 border-white mt-10'>
+            <div className='align w-fit px-4 flex flex-col lg:flex-row mx-auto border-x-8 border-white mt-10'>
                 <p className=' text-orange-400 text-5xl font-semibold'>{program.namedetail}</p>
                 <p className='mx-5'>AKA</p>
                 <p className=' text-orange-500 text-5xl font-bold'>{program.name}</p>
             </div>
-            <div className='flex flex-row mt-20'>
-                <div className='ml-20 mt-10 w-1/3 text-justify'>
+            <div className='flex flex-col lg:flex-row mt-20'>
+                <div className='lg:ml-20 mt-10 w-3/4 mx-auto lg:w-1/3 text-justify'>
                     <p className='text-orange-400 text-3xl font-semibold h-fit pl-5 mb-10 text-left border-l-8 border-orange-600'>About</p>
                     <p>{program.details}</p>
                 </div>
 
-                <div className='mt-10 ml-20'>
+                <div className='mt-10 mx-auto lg:ml-20'>
                     <img src={program.img} alt=''></img>
                 </div>
 
-                <div className='text-left ml-20 mr-20 mt-10'>
+                <div className='text-left ml-5 lg:ml-20 lg:mr-20 mt-10'>
                     <ul>
                         <p className='text-orange-400 text-3xl font-semibold h-fit pr-5 mb-10 text-right border-r-8 border-orange-600'>${program.price}</p>
                         <li>
